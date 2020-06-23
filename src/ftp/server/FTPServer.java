@@ -7,7 +7,6 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -42,26 +41,17 @@ public class FTPServer {
 			e.printStackTrace();
 		}
 		Socket socket;
-		InputStream inputStream;
-		OutputStream outputStream;
 		while (true) {
-
 			if (serverSocket != null) {
-
 				try {
 					socket = serverSocket.accept();
-					inputStream = socket.getInputStream();
-					outputStream = socket.getOutputStream();
-					
-					String t = "Congratulations! You have establised connection to Server";
-					outputStream.write(t.getBytes());
-					
+					Response response = new Response(socket);
+					response.start();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
 			else {
 				logger.error("Server Socket is null and cannot be in listening state");
 				break;

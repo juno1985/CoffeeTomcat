@@ -13,8 +13,19 @@ public class FTPClientStarter {
 		InetAddress serverAdd = InetAddress.getByName("127.0.0.1");
 		int port = 8888;
 		
-		FTPClient ftpClient = new FTPClient(serverAdd, port);
-		ftpClient.connect();
+	
+		for(int i = 0 ; i < 3 ; i++) {
+			new Thread() {
+
+				@Override
+				public void run() {
+					FTPClient ftpClient = new FTPClient(serverAdd, port);
+					ftpClient.connect();
+				}
+				
+			}.start();
+		}
+		
 	}
 
 }
