@@ -23,7 +23,7 @@
 	<classpathentry kind="lib" path="library/naming-common.jar"/>
 	<classpathentry kind="lib" path="library/naming-factory.jar"/>
 	<classpathentry kind="lib" path="library/naming-resources.jar"/>
-	<classpathentry kind="lib" path="library/servlet.jar"/>
+	<classpathentry kind="lib" path="library/servlet.jar" sourcepath="F:/Desktop/深入剖析Tomcat（中文版）+书本源码+tomcat源码/深入剖析Tomcat/apache-tomcat-7.0.32-src"/>
 	<classpathentry kind="lib" path="library/tomcat-util.jar"/>
 	<classpathentry kind="lib" path="library/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="library/xmlParserAPIs.jar"/>
