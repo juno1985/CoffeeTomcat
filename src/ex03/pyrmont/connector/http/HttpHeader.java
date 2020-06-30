@@ -91,6 +91,7 @@ final class HttpHeader {
      * Test if the name of the header is equal to the given char array.
      * All the characters must already be lower case.
      */
+    //检查name是否相同
     public boolean equals(char[] buf, int end) {
         if (end != nameEnd)
             return false;
@@ -106,6 +107,7 @@ final class HttpHeader {
      * Test if the name of the header is equal to the given string.
      * The String given must be made of lower case characters.
      */
+    //检查name是否相同
     public boolean equals(String str) {
         return equals(str.toCharArray(), str.length());
     }
@@ -114,6 +116,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header is equal to the given char array.
      */
+    //检查value是否相同
     public boolean valueEquals(char[] buf) {
         return valueEquals(buf, buf.length);
     }
@@ -122,6 +125,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header is equal to the given char array.
      */
+    //检查value是否相同
     public boolean valueEquals(char[] buf, int end) {
         if (end != valueEnd)
             return false;
@@ -136,6 +140,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header is equal to the given string.
      */
+    //检查value是否相同
     public boolean valueEquals(String str) {
         return valueEquals(str.toCharArray(), str.length());
     }
@@ -144,6 +149,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header includes the given char array.
      */
+  //检查value中是否包括buf字符串
     public boolean valueIncludes(char[] buf) {
         return valueIncludes(buf, buf.length);
     }
@@ -152,6 +158,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header includes the given char array.
      */
+    //检查value中是否包括buf字符串
     public boolean valueIncludes(char[] buf, int end) {
         char firstChar = buf[0];
         int pos = 0;
@@ -176,6 +183,7 @@ final class HttpHeader {
     /**
      * Test if the value of the header includes the given string.
      */
+  //检查value中是否包括buf字符串
     public boolean valueIncludes(String str) {
         return valueIncludes(str.toCharArray(), str.length());
     }
@@ -184,6 +192,7 @@ final class HttpHeader {
     /**
      * Returns the index of a character in the value.
      */
+    //返回给定字符在value出现的第一个位置
     public int valueIndexOf(char c, int start) {
         for (int i=start; i<valueEnd; i++) {
             if (value[i] == c)
@@ -197,6 +206,7 @@ final class HttpHeader {
      * Test if the name of the header is equal to the given header.
      * All the characters in the name must already be lower case.
      */
+    //检查两个Header的name是否相同
     public boolean equals(HttpHeader header) {
         return (equals(header.name, header.nameEnd));
     }
@@ -206,6 +216,7 @@ final class HttpHeader {
      * Test if the name and value of the header is equal to the given header.
      * All the characters in the name must already be lower case.
      */
+    //检查两个Header的name和value是否完全相同
     public boolean headerEquals(HttpHeader header) {
         return (equals(header.name, header.nameEnd))
             && (valueEquals(header.value, header.valueEnd));

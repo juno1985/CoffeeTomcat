@@ -131,6 +131,7 @@ public class SocketInputStream extends InputStream {
             requestLine.recycle();
 
         // Checking for a blank line
+        //跳过回车换行符
         int chr = 0;
         do { // Skipping CR or LF
             try {
@@ -152,8 +153,10 @@ public class SocketInputStream extends InputStream {
 
         boolean space = false;
 
+        //解析method
         while (!space) {
             // if the buffer is full, extend it
+        	//
             if (readCount >= maxRead) {
                 if ((2 * maxRead) <= HttpRequestLine.MAX_METHOD_SIZE) {
                     char[] newBuffer = new char[2 * maxRead];
@@ -176,6 +179,7 @@ public class SocketInputStream extends InputStream {
                 pos = 0;
                 readStart = 0;
             }
+            //读到空格则跳出
             if (buf[pos] == SP) {
                 space = true;
             }
@@ -195,7 +199,7 @@ public class SocketInputStream extends InputStream {
         space = false;
 
         boolean eol = false;
-
+        //读取uri
         while (!space) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
@@ -238,7 +242,7 @@ public class SocketInputStream extends InputStream {
         maxRead = requestLine.protocol.length;
         readStart = pos;
         readCount = 0;
-
+        //读取协议
         while (!eol) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
@@ -316,7 +320,7 @@ public class SocketInputStream extends InputStream {
         int readCount = 0;
 
         boolean colon = false;
-
+        //读header
         while (!colon) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
