@@ -287,6 +287,12 @@ final class HttpProcessor
      */
     synchronized void assign(Socket socket) {
 
+
+        /**
+         * Is there a new socket available?
+         * private boolean available = false;
+         */
+        
         // Wait for the Processor to get the previous Socket
         while (available) {
             try {

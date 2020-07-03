@@ -944,7 +944,7 @@ public final class HttpConnector
         // Loop until we receive a shutdown command
         while (!stopped) {
             // Accept the next incoming connection from the server socket
-            Socket socket = null;
+           Socket socket = null; 
             try {
                 //                if (debug >= 3)
                 //                    log("run: Waiting on serverSocket.accept()");
@@ -1011,7 +1011,8 @@ public final class HttpConnector
                 continue;
             }
             //            if (debug >= 3)
-            //                log("run: Assigning socket to processor " + processor);
+            log("run: Assigning socket to processor " + processor);
+            //这里是connector的线程，还是procssor的线程去做assign？？？？？？？？？？
             processor.assign(socket);
 
             // The processor will recycle itself when it finishes
@@ -1158,10 +1159,12 @@ public final class HttpConnector
         threadStart();
 
         // Create the specified minimum number of processors
+        
         while (curProcessors < minProcessors) {
             if ((maxProcessors > 0) && (curProcessors >= maxProcessors))
                 break;
             HttpProcessor processor = newProcessor();
+            //将processor入栈
             recycle(processor);
         }
 
